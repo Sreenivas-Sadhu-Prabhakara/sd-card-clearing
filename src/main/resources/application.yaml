@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: sd-card-clearing
+
+server:
+  port: 8080
+  shutdown: graceful
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus,metrics
+  endpoint:
+    health:
+      probes:
+        enabled: true   # /actuator/health/liveness + /readiness for K8s probes
+  info:
+    env:
+      enabled: true
+
+info:
+  bian:
+    serviceDomain: "Card Clearing"
+    businessArea: "Operations and Execution"
+    businessDomain: "Cards"
+    functionalPattern: "Operate"
+    assetType: "Card Clearing Cycle"
+    controlRecord: "Card Clearing Cycle Operating Session"
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      serviceDomain:
+        slidingWindowSize: 20
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html

@@ -1,0 +1,14 @@
+apiVersion: v2
+name: sd-card-clearing
+description: "BIAN Service Domain: Card Clearing (Operate pattern, Operations and Execution)"
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
+keywords:
+  - bian
+  - operate
+annotations:
+  bian/business-area: "Operations and Execution"
+  bian/business-domain: "Cards"
+  bian/asset-type: "Card Clearing Cycle"
+  bian/control-record: "Card Clearing Cycle Operating Session"
